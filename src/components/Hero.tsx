@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ArrowRight, Maximize2 } from 'lucide-react';
 import {
   CONDOMINIUM_NAME,
   KEY_METRICS,
   LOCATION_CORRIDOR,
   MEDIA_ASSETS,
-  getWhatsAppUrl,
   type MediaAsset,
 } from '../data/propertyData';
+import { DossierRequestModal } from './DossierRequestModal';
 import { ResilientImage } from './ResilientImage';
 
 interface HeroProps {
@@ -16,6 +16,8 @@ interface HeroProps {
 
 export function Hero({ onInspectImage }: HeroProps) {
   const [activeVisual, setActiveVisual] = useState<'vista' | 'render'>('vista');
+  const [isDossierModalOpen, setIsDossierModalOpen] = useState(false);
+  const closeDossierModal = useCallback(() => setIsDossierModalOpen(false), []);
 
   const currentAsset =
     activeVisual === 'vista' ? MEDIA_ASSETS.condominioVista : MEDIA_ASSETS.renderExterior;
@@ -46,15 +48,14 @@ export function Hero({ onInspectImage }: HeroProps) {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3.5">
-                <a
-                  href={getWhatsAppUrl('CTA Agendar visita privada · sección principal')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-[#1F4A34] px-5 py-3 text-sm font-medium text-white whitespace-nowrap shrink-0 transition-colors duration-150 hover:bg-[#173928] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F4A34]"
+                <button
+                  type="button"
+                  onClick={() => setIsDossierModalOpen(true)}
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-[#1F4A34] px-5 py-3 text-left text-sm font-medium leading-snug text-white shrink-0 transition-colors duration-150 hover:bg-[#173928] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F4A34]"
                 >
-                  <span>Agendar visita privada</span>
+                  <span>Descarga Proyección Casas</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
+                </button>
                 <a
                   href="#plano-comercial"
                   className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-[#C8CCC2] bg-white px-5 py-3 text-sm font-medium text-[#16241B] whitespace-nowrap shrink-0 transition-colors duration-150 hover:border-[#16241B] hover:bg-[#EFEFEA] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F4A34]"
@@ -148,6 +149,7 @@ export function Hero({ onInspectImage }: HeroProps) {
           </div>
         </div>
       </div>
+      {isDossierModalOpen && <DossierRequestModal onClose={closeDossierModal} />}
     </section>
   );
 }

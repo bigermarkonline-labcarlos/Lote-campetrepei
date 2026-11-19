@@ -27,6 +27,7 @@ export const LOCATION_CORRIDOR = 'Km 11 vía Pereira - Armenia';
 export const WHATSAPP_PHONE = '573122977712';
 export const WHATSAPP_PREFILL_MESSAGE =
   'Me interesa el lote campestre de 2.532 mt2 via Armenia';
+export const DOSSIER_PDF_PATH = '/docs/dossier-arquitectonico-lote-alicante.pdf';
 
 export function getWhatsAppUrl(source: string, customMessage = WHATSAPP_PREFILL_MESSAGE): string {
   const text = encodeURIComponent(`${customMessage}\n\nOrigen: ${source}`);
