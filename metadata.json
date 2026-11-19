@@ -1,0 +1,6 @@
+{
+  "name": "Lote Campestre Pereira",
+  "description": "Terreno campestre exclusivo en Condominio Alicante, Km 11 vía Pereira - Armenia, con vista panorámica permanente, reserva ecológica y proyección arquitectónica.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
