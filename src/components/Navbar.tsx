@@ -4,7 +4,6 @@ import { BRAND_NAME, getWhatsAppUrl } from '../data/propertyData';
 
 const NAV_ITEMS = [
   { label: 'Terreno', href: '#datos-clave' },
-  { label: 'Entorno', href: '#entorno-arquitectura' },
   { label: 'Plano comercial', href: '#plano-comercial' },
   { label: 'Condominio', href: '#seguridad-condominio' },
   { label: 'Ubicación', href: '#ubicacion-contacto' },
